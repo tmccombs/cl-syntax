@@ -50,12 +50,12 @@ Here is an example:
 
     ;; Define cl-interpol syntax
     (defsyntax interpol-syntax
-      (:dispatch-macro-character #\# #\? #'cl-interpol::interpol-reader))
+      (:dispatch-macro-char #\# #\? #'cl-interpol::interpol-reader))
 
 This code is equivalent to:
 
-    (defvar interpol-syntax
-        `((:dispatch-macro-character #\# #\? ,#'cl-interpol::interpol-reader)))
+    (named-readtables:defreadtable interpol-syntax
+        `((:dispatch-macro-char #\# #\? ,#'cl-interpol::interpol-reader)))
 
 If you don't want to use `defsyntax` in some reasons, use this code
 instead.
